@@ -169572,6 +169572,9 @@ const checkEmailDeliverability = async (email) => {
         if (data.startsWith("421")) {
           resolve(false);
         }
+        if (data.startsWith("550")) {
+          resolve(false);
+        }
         if (step === 0) {
           client.write(`HELO ${domain}\r\n`);
           step++;
